@@ -12,5 +12,19 @@
   <form action="/users/{{user.id}}/delete" method="POST">
     <button>Delete</button>
   </form>
+  <h3>Posts</h3>
+  {% for msg in get_flashed_messages() %}
+  <p class="flash-message">{{ msg }}</p>
+  {% endfor %}
+  <ul>
+    {% for post in user.posts %}
+    <li>
+      <a href="/posts/{{post.id}}">{{post.title}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <form action="/users/{{user.id}}/posts/new" method="GET">
+    <button>Add Post</button>
+  </form>
 </div>
 {% endblock %}
