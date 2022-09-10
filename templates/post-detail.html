@@ -3,17 +3,24 @@
 {% block title %}{{post.title}}{% endblock %}
 <!--  -->
 {% block main_content %}
-<div>
+<div class="container">
   <h1>{{post.title}}</h1>
   <p>{{post.content}}</p>
-  <form action="/users/{{post.user_id}}">
-    <button>Back to {{post.users.first_name}} {{post.users.last_name}}</button>
-  </form>
-  <form action="/posts/{{post.id}}/edit" method="GET">
-    <button>Edit</button>
-  </form>
-  <form action="/posts/{{post.id}}/delete" method="POST">
-    <button>Delete</button>
-  </form>
+  <div class="btn-group" role="group">
+    <form action="/users/{{post.user_id}}">
+      <button class="btn btn-light me-1">
+        Back to {{post.users.first_name}} {{post.users.last_name}}
+      </button>
+    </form>
+    <form action="/posts/{{post.id}}/edit" method="GET">
+      <button class="btn btn-primary mx-1">Edit</button>
+    </form>
+    <form action="/posts/{{post.id}}/delete" method="POST">
+      <button class="btn btn-danger mx-1">Delete</button>
+    </form>
+  </div>
+
+  <br />
+  <a href="/"><button class="btn btn-dark mt-5">Return to Home</button></a>
 </div>
 {% endblock %}

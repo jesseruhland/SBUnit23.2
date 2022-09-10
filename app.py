@@ -1,8 +1,9 @@
 """Blogly application."""
 
 from flask import Flask, request, redirect, render_template, flash
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Post
+from datetime import datetime
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///blogly'
@@ -10,15 +11,16 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = 'secretkey'
 
-debug = DebugToolbarExtension(app)
+# debug = DebugToolbarExtension(app)
 
 connect_db(app)
 #db.create_all()
 
 @app.route("/")
-def redirect_for_now():
-    """as directed by the assignment, this currently redirects to /users"""
-    return redirect ('/users')
+def display_home():
+    """display homepage with 5 recent posts"""
+    posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
+    return render_template('homepage.html', posts=posts)
 
 
 @app.route("/users")

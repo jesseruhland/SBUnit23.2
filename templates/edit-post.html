@@ -3,14 +3,19 @@
 {% block title %}Edit Post{% endblock %}
 <!--  -->
 {% block main_content %}
-<h1>Edit Post</h1>
-<form action="/posts/{{post.id}}/edit" method="POST">
-  <label for="title">Title</label><br />
-  <input type="text" name="title" required value="{{post.title}}" /><br />
-  <label for="content">Content</label><br />
-  <textarea type="text" name="content" rows="4">{{post.content}}</textarea
-  ><br />
-  <button>Save</button>
-</form>
-<form action="/posts/{{post.id}}"><button>Cancel</button></form>
+<div class="container">
+  <h1>Edit Post</h1>
+  <form action="/posts/{{post.id}}/edit" method="POST">
+    <label for="title">Title</label><br />
+    <input type="text" name="title" required value="{{post.title}}" /><br />
+    <label for="content">Content</label><br />
+    <textarea type="text" name="content" rows="4">{{post.content}}</textarea
+    ><br />
+    <button class="btn btn-success mt-2">Save</button>
+  </form>
+  <form action="/posts/{{post.id}}">
+    <button class="btn btn-danger mt-2">Cancel</button>
+  </form>
+</div>
+
 {% endblock %}

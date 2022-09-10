@@ -3,16 +3,18 @@
 {% block title %}User List{% endblock %}
 <!--  -->
 {% block main_content %}
-<h1>Users</h1>
-{% for msg in get_flashed_messages() %}
-<p class="flash-message">{{ msg }}</p>
-{% endfor %}
-<ul>
-  {% for user in users %}
-  <li>
-    <a href="/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a>
-  </li>
+<div class="container">
+  <h1>Users</h1>
+  {% for msg in get_flashed_messages() %}
+  <p class="flash-message">{{ msg }}</p>
   {% endfor %}
-</ul>
-<a href="/users/new"><button>Add User</button></a>
+  <ul>
+    {% for user in users %}
+    <li>
+      <a href="/users/{{user.id}}">{{user.first_name}} {{user.last_name}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <a href="/users/new"><button class="btn btn-primary">Add User</button></a>
+</div>
 {% endblock %}

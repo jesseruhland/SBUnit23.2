@@ -3,13 +3,18 @@
 {% block title %}New Post{% endblock %}
 <!--  -->
 {% block main_content %}
-<h1>New Post for {{user.first_name}} {{user.last_name}}</h1>
-<form action="/users/{{user.id}}/posts/new" method="POST">
-  <label for="title">Title</label><br />
-  <input type="text" name="title" required /><br />
-  <label for="content">Content</label><br />
-  <textarea type="text" name="content" rows="4"></textarea><br />
-  <button>Add</button>
-</form>
-<form action="/users/{{user.id}}"><button>Cancel</button></form>
+<div class="container">
+  <h1>New Post for {{user.first_name}} {{user.last_name}}</h1>
+  <form action="/users/{{user.id}}/posts/new" method="POST">
+    <label for="title">Title</label><br />
+    <input type="text" name="title" required /><br />
+    <label for="content">Content</label><br />
+    <textarea type="text" name="content" rows="4"></textarea><br />
+    <button class="btn btn-success">Add</button>
+  </form>
+  <form action="/users/{{user.id}}">
+    <button class="btn btn-danger mt-2">Cancel</button>
+  </form>
+</div>
+
 {% endblock %}
