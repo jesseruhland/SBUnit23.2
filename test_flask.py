@@ -144,12 +144,12 @@ class ViewsTestCase(TestCase):
 
     def test_edit_post_submission(self):
         with app.test_client() as client:
-            d = {"title": "Betty White's Article", "content": "Betty White's content"}
+            d = {"title": "Betty White Article", "content": "Betty White's content"}
             resp = client.post(f"/posts/{self.post_id}/edit", data=d, follow_redirects=True)
             html = resp.get_data(as_text=True)
 
             self.assertEqual(resp.status_code, 200)
-            self.assertIn("Betty White's Article has been updated successfully!", html)
+            self.assertIn("Betty White Article has been updated successfully!", html)
 
     def test_delete_post(self):
         with app.test_client() as client:
